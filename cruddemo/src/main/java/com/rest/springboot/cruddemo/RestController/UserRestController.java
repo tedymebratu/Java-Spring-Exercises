@@ -54,10 +54,6 @@ public class UserRestController {
         return theUser;
     }
 
-    /*private String name;
-    private String email;
-    private int phone;
-    private String city*/
 
 /*    //Modify User
     @PutMapping("/user/{userId}")

@@ -34,6 +34,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    @Transactional
     public User findById(int theId) {
         Session currentSession=entityManager.unwrap(Session.class);
 
@@ -42,6 +43,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    @Transactional
     public void save(User theUser) {
         Session currentSession=entityManager.unwrap(Session.class);
         currentSession.saveOrUpdate(theUser);
@@ -49,6 +51,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    @Transactional
     public void deleteById(int theId) {
         Session currentSession=entityManager.unwrap(Session.class);
         Query theQuery=currentSession.createQuery("delete from User where id=:userId");
@@ -60,11 +63,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    @Transactional
     public List<User> findAllByPage() {
         Session currentSession=entityManager.unwrap(Session.class);
         Query theQuery=currentSession.createQuery("from User");
 
-        theQuery.setFirstResult(0);
+        theQuery.setFirstResult(1);
         theQuery.setMaxResults(2);
 
         List<User> theUser=theQuery.list();
@@ -72,6 +76,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    @Transactional
     public List<User> findByTechId(int theId) {
         Session currentSession=entityManager.unwrap(Session.class);
 
